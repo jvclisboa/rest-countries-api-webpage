@@ -1,0 +1,40 @@
+main {
+    margin-left: 16px;
+    margin-right: 16px;
+}
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 28px;
+    justify-items: center;
+    align-items: center;
+    
+}
+
+@media (min-width: 640px) {
+    .grid {
+        grid-template-columns: repeat((2, 1fr));
+    }
+}
+
+@media (min-width: 864px) {
+    .grid {
+        grid-template-columns: repeat((3, 1fr));
+    }
+}
+
+@media (min-width: 1280px) {
+ 
+    main {
+        margin-left:80px;
+        margin-right: 80px;
+    }
+    
+    .grid {
+        grid-template-columns: repeat((4, 1fr));
+        grid-gap: 40px;
+
+    }
+
+ 
+}
