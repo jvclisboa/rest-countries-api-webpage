@@ -17,7 +17,7 @@ const Filter = () => {
 
       <div>
           <select name="select" id="select" className="select">
-              <option value="Filter by Region" selected="selected">Filter by Region</option>
+              <option value="Filter by Region" defaultValue>Filter by Region</option>
               <option value="Africa">Africa</option>
               <option value="America">America</option>
               <option value="Asia">Asia</option>

@@ -5,7 +5,7 @@ const Country = (props) => {
   return (
     <div>
       <div className="container" key={props.numericCode}>
-        <div class="flag-container">
+        <div className="flag-container">
           <img src={props.flag} alt={props.name} />
         </div>
         <div className="country">
