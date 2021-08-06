@@ -19,25 +19,56 @@ const Countries = () => {
     fetchCountryData();
   }, []);
   return (
-    <main>
+    <main className="countries-list">
       <div id="filter">
         <Filter />
       </div>
 
       <div className="grid">
-        {countries.map((country) => {
-          const { name, population, region, capital, flag, numericCode } =
-            country;
+        {countries.map((country, index, array) => {
+          const {
+            name,
+            population,
+            region,
+            capital,
+            flag,
+            numericCode,
+            topLevelDomain,
+            nativeName,
+            currencies,
+            borders,
+            languages,
+            subregion,
+            
+          } = country;
           return (
-            <Link to={`/countries/${name}`}>
-                <Country
+            <Link
+              to={{
+                pathname: `/countries/${name}`,
+                state: {
+                  name: name,
+                  population: population,
+                  region: region,
+                  capital: capital,
+                  flag: flag,
+                  topLevelDomain: topLevelDomain,
+                  nativeName: nativeName,
+                  currencies: currencies,
+                  borders: borders,
+                  languages: languages,
+                  subregion: subregion,
+                  countries: array,
+                },
+              }}
+            >
+              <Country
                 name={name}
                 population={population}
                 region={region}
                 capital={capital}
                 flag={flag}
                 numericCode={numericCode}
-                />
+              />
             </Link>
           );
         })}
