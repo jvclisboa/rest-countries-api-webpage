@@ -13,6 +13,7 @@ const Countries = () => {
     const response = await fetch(url);
     const countriesFetched = await response.json();
     setCountries(countriesFetched);
+    console.log(countries)
   };
 
   useEffect(() => {
@@ -25,40 +26,20 @@ const Countries = () => {
       </div>
 
       <div className="grid">
-        {countries.map((country, index, array) => {
+        {countries.map((country, _index, array) => {
           const {
             name,
             population,
             region,
             capital,
             flag,
-            numericCode,
-            topLevelDomain,
-            nativeName,
-            currencies,
-            borders,
-            languages,
-            subregion,
+            alpha3Code,
             
           } = country;
           return (
             <Link
               to={{
                 pathname: `/countries/${name}`,
-                state: {
-                  name: name,
-                  population: population,
-                  region: region,
-                  capital: capital,
-                  flag: flag,
-                  topLevelDomain: topLevelDomain,
-                  nativeName: nativeName,
-                  currencies: currencies,
-                  borders: borders,
-                  languages: languages,
-                  subregion: subregion,
-                  countries: array,
-                },
               }}
             >
               <Country
@@ -67,7 +48,7 @@ const Countries = () => {
                 region={region}
                 capital={capital}
                 flag={flag}
-                numericCode={numericCode}
+                alpha3Code={alpha3Code}
               />
             </Link>
           );
