@@ -104,7 +104,7 @@ const CountryDetail = () => {
                       </p>
                   </div>            
               </div>
-              <div className="borders">
+            {country.borders.length > 0  &&  <div className="borders">
                 <h3>Border Countries:</h3>
                   <div>
                     
@@ -114,7 +114,7 @@ const CountryDetail = () => {
                     }
                     )}
                   </div>
-            </div>  
+              </div>  }
             </div>              
             
         </div>
