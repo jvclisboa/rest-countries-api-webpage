@@ -1,3 +1,5 @@
+@import '../../styles/variables.scss';
+
 .filter {
     display: flex;
     flex-direction: column;
@@ -9,7 +11,7 @@
             position: absolute;
             top: 12px;
             left: 32px;
-            color:#C4C4C4;
+            color: $input-color-light;
         }
 
         input {
@@ -28,7 +30,7 @@
     
         input::placeholder {
             
-            color: #C4C4C4;
+            color: $input-color-light;
         }
     }
 
@@ -37,11 +39,11 @@
         height: 48px;
         border: none;
         padding-left: 24px;
-        background: #FFFFFF;
+        background: $btn-light;
         box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.05);
         border-radius: 5px;
         font-family: 'Nunito Sans', sans-serif;
-        color: #111517;
+        color: $font-color-light;
         font-weight: 400;
         margin-bottom: 32px;
         outline: none;
@@ -49,7 +51,7 @@
 
     .select > option {
         font-family: 'Nunito Sans', sans-serif;
-        color: #111517;
+        color: $font-color-light;
         font-size: 14px;
     }
   
