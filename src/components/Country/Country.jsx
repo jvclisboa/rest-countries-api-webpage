@@ -4,7 +4,7 @@ import "./Country.scss";
 const Country = (props) => {
   return (
     <div key={props.alpha3Code}>
-      <div className="container" >
+      <div className="container">
         <div className="flag-container">
           <img src={props.flag} alt={props.name} />
         </div>
@@ -12,7 +12,7 @@ const Country = (props) => {
           <h3>{props.name}</h3>
           <div className="details">
             <h4>
-              Population: <span>{props.population}</span>
+              Population: <span>{props.population.toLocaleString()}</span>
             </h4>
             <h4>
               Region: <span>{props.region}</span>

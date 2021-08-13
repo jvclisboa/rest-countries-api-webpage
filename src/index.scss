@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
-@import './styles/variables.scss';
-
-
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap");
+@import "./styles/variables.scss";
 
 * {
   margin: 0;
@@ -15,55 +13,54 @@ img {
 
 body {
   background-color: $background-light;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: "Nunito Sans", sans-serif;
   color: $font-color-light;
- 
- }
+}
 
- body.dark {
-   background-color: $background-black;
-   color: $card-light;
+body.dark {
+  background-color: $background-black;
+  color: $card-light;
 
-   .container {
-     background-color: $card-dark;
-   }
+  .container {
+    background-color: $card-dark;
+  }
 
-   .header {
-     background-color: $card-dark;
-   }
+  .header {
+    background-color: $card-dark;
 
-   .filter {
-      form {
-        input {
-          color: $card-light;
-          background-color: $card-dark;
-        }
-     
-        
-        input::placeholder {
-         color: $card-light; 
-       }
-     
-       i {
-         color: $card-light;
-       }
-     
+    svg {
+      fill: $card-light;
+    }
+  }
+
+  .filter {
+    form {
+      input {
+        color: $card-light;
+        background-color: $card-dark;
       }
-   }
-  
-   .select {
+
+      input::placeholder {
+        color: $card-light;
+      }
+
+      i {
+        color: $card-light;
+      }
+    }
+  }
+
+  .select {
     background-color: $card-dark;
     color: $card-light;
 
     option {
       color: $card-light;
     }
-   }
+  }
 
-   button {
-     background-color: $card-dark;
-     color: $card-light;
-   }
- }
-
-
+  button {
+    background-color: $card-dark;
+    color: $card-light;
+  }
+}

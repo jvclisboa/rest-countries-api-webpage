@@ -8,7 +8,8 @@ const url = "https://restcountries.eu/rest/v2/all";
 
 const Countries = () => {
   const [countries, setCountries] = useState([]);
-  const [searchTerm, setSearchTerm] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [option, setOption] = useState('')
 
   const fetchCountryData = async () => {
     const response = await fetch(url);
@@ -24,18 +25,29 @@ const Countries = () => {
   const handleChange = (newValue) => {
     setSearchTerm(newValue)
   }
+
+  const handleOptionChange = (newOption) => {
+    setOption(newOption)
+  }
   return (
     <main className="countries-list">
       <div id="filter">
-        <Filter searchTerm={searchTerm} onChange={handleChange}/>
+        <Filter searchTerm={searchTerm} option={option} onChange={handleChange} onOptionChange={handleOptionChange} />
       </div>
 
       <div className="grid">
         {countries.filter(val => {
-          if (searchTerm == "") {
+          if (searchTerm === "" ) {
             return val
           } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())) {
             return val
+          }
+        }).filter(country => {
+          if (option === '' || option === 'Filter by Region') {
+            return country
+          } else if(country.region === option) {
+            console.log(option)
+            return country
           }
         }).
         map((country, _index, _array) => {

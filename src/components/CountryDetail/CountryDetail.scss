@@ -1,16 +1,12 @@
-@import '../../styles/variables.scss';
-
-
+@import "../../styles/variables.scss";
 
 .country-page {
-   margin: 0 28px;
+  margin: 0 28px;
   .all-details {
-    
     .name {
       font-size: 22px;
       font-weight: 800;
       margin-bottom: 16px;
-     
     }
 
     .flag-page {
@@ -18,13 +14,12 @@
       width: calc(100%-14px);
       margin-bottom: 32px;
       #flagz {
-          width: 100%;
-          border-radius: 5px;
+        width: 100%;
+        border-radius: 5px;
       }
     }
 
     .informations {
-        
       strong {
         font-weight: 800;
       }
@@ -34,9 +29,7 @@
       }
 
       .details1 {
-        
         margin-bottom: 32px;
-        
       }
 
       .details2 {
