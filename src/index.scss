@@ -54,6 +54,10 @@ body {
    .select {
     background-color: $card-dark;
     color: $card-light;
+
+    option {
+      color: $card-light;
+    }
    }
 
    button {

@@ -8,6 +8,7 @@ const url = "https://restcountries.eu/rest/v2/all";
 
 const Countries = () => {
   const [countries, setCountries] = useState([]);
+  const [searchTerm, setSearchTerm] = useState([]);
 
   const fetchCountryData = async () => {
     const response = await fetch(url);
@@ -19,14 +20,25 @@ const Countries = () => {
   useEffect(() => {
     fetchCountryData();
   }, []);
+
+  const handleChange = (newValue) => {
+    setSearchTerm(newValue)
+  }
   return (
     <main className="countries-list">
       <div id="filter">
-        <Filter />
+        <Filter searchTerm={searchTerm} onChange={handleChange}/>
       </div>
 
       <div className="grid">
-        {countries.map((country, _index, array) => {
+        {countries.filter(val => {
+          if (searchTerm == "") {
+            return val
+          } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+            return val
+          }
+        }).
+        map((country, _index, _array) => {
           const {
             name,
             population,

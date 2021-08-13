@@ -2,16 +2,21 @@ import React from "react";
 import './Filter.scss'
 import {BiSearchAlt2} from 'react-icons/bi'
 
-const Filter = () => {
+const Filter = (props) => {
+ 
+
   return (
     <section className="filter">
       <form className="form=control">
         <i><BiSearchAlt2 size={24}/></i>
         <input
-          type="search"
-          name="search"
-          id="search"
-          placeholder="Search for a country..."/>
+          type="text"
+          placeholder="Search for a country..."
+          value={props.searchTerm}
+          onChange={(event) => {
+            props.onChange(event.target.value)
+            console.log(props.searchTerm)
+          }} />
         
       </form>
 
