@@ -17,14 +17,14 @@ const CountryDetail = () => {
     const response = await fetch(url);
     const countryFetched = await response.json();
     setCountry(countryFetched);
-    console.log(country);
+    
   };
 
   const fetchAlphaCodes = async () => {
     const response = await fetch(url2);
     const alphaCodesFetched = await response.json();
     setAlphaCodes(alphaCodesFetched);
-    console.log(alphaCodes);
+    
   };
 
   useEffect(() => {

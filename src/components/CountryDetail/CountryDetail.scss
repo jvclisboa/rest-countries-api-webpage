@@ -88,13 +88,12 @@
 
     .all-details {
       display: flex;
-
       flex-direction: column;
       .flag-page {
         width: 320px;
 
         #flagz {
-          height: 260px;
+          height: 240px;
           width: 100%;
         }
       }
@@ -105,6 +104,7 @@
 
         .name {
           margin-bottom: 24px;
+          width: 500px;
         }
         .infdetails {
           display: flex;
@@ -153,6 +153,9 @@
       }
 
       .informations {
+        .name {
+          width: 600px;
+        }
         .infdetails {
           .container-inf {
             width: 600px;
@@ -160,6 +163,121 @@
 
           .borders {
             width: 600px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1600px) {
+  .country-page {
+    .all-details {
+      .flag-page {
+        width: 492px;
+        #flagz {
+          height: 300px;
+        }
+      }
+
+      .informations {
+        .name {
+          width: 900px;
+        }
+        .infdetails {
+          h2 {
+            font-size: 24px;
+          }
+          .container-inf {
+            width: 900px;
+          }
+          p {
+            font-size: 18px;
+          }
+
+          .borders {
+            width: 900px;
+
+            h3 {
+              font-size: 18px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 2048px) {
+  .country-page {
+    .all-details {
+      .flag-page {
+        width: 720px;
+        #flagz {
+          height: 400px;
+        }
+      }
+
+      .informations {
+        .name {
+          width: 1020px;
+        }
+        .infdetails {
+          h2 {
+            font-size: 36px;
+          }
+          .container-inf {
+            width: 1020px;
+            p {
+              font-size: 24px;
+            }
+          }
+
+          .borders {
+            width: 1020px;
+
+            h3 {
+              font-size: 26px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media (min-width: 2296px) {
+  .country-page {
+    .all-details {
+      .flag-page {
+        width: 900px;
+        #flagz {
+          height: 490px;
+        }
+      }
+
+      .informations {
+        .name {
+          width: 1220px;
+        }
+        .infdetails {
+          h2 {
+            font-size: 42px;
+          }
+          .container-inf {
+            width: 1220px;
+            p {
+              font-size: 26px;
+            }
+          }
+
+          .borders {
+            width: 1220px;
+
+            h3 {
+              font-size: 28px;
+            }
           }
         }
       }

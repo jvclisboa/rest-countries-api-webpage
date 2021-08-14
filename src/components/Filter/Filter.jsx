@@ -15,7 +15,7 @@ const Filter = (props) => {
           value={props.searchTerm}
           onChange={(event) => {
             props.onChange(event.target.value);
-            //console.log(props.searchTerm)
+            
           }}
         />
       </form>
@@ -25,7 +25,7 @@ const Filter = (props) => {
           className="select"
           onChange={(e) => {
             props.onOptionChange(e.target.value);
-            console.log(e.target.value);
+            
           }}
           value={props.option}
         >
