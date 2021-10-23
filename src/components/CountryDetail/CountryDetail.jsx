@@ -7,30 +7,35 @@ import { BsArrowLeft } from "react-icons/bs";
 
 const CountryDetail = () => {
   const params = useParams();
-  const countryName = params.name;
-  const [alphaCodes, setAlphaCodes] = useState([]);
+  const cca3 = params.name;
+
+  const [isLoading, setIsLoading] = useState(true); 
   const [country, setCountry] = useState([]);
-  const url = `https://restcountries.eu/rest/v2/name/${countryName}?fullText=true`;
-  const url2 = `https://restcountries.eu/rest/v2/all?fields=name;alpha3Code`;
+  const [namesAndCca3, setNamesAndCca3] = useState([]);
+  
+  const url = `https://restcountries.com/v3.1/alpha/${cca3}`;
+  const urlNamesCca3 = `https://restcountries.com/v3.1/all?fields=name,cca3`;
 
-  const fetchCountryData = async () => {
+  const fetchCountry = async () => {
     const response = await fetch(url);
-    const countryFetched = await response.json();
-    setCountry(countryFetched);
+    const data = await response.json();
+    setCountry(data);
     
-  };
+  }
 
-  const fetchAlphaCodes = async () => {
-    const response = await fetch(url2);
-    const alphaCodesFetched = await response.json();
-    setAlphaCodes(alphaCodesFetched);
-    
-  };
+  const fetchNamesAndCca3 = async () => {
+    const response = await fetch(urlNamesCca3);
+    const data = await response.json();
+    setNamesAndCca3(data);
+  }
 
   useEffect(() => {
-    fetchCountryData();
-    fetchAlphaCodes();
-  }, [countryName]);
+    fetchCountry();
+    fetchNamesAndCca3();
+    setIsLoading(false)
+  }, [cca3]);
+
+  if(isLoading){ return <div>Loading...</div>} 
 
   return (
     <main className="country-page">
@@ -45,17 +50,17 @@ const CountryDetail = () => {
         <section className="all-details">
           <div className="informations">
             <div className="flag-page">
-              <img id="flagz" src={country.flag} alt={country.name} />
+              <img id="flagz" src={country.flags.svg} alt={country.name.common} />
             </div>
 
             <div className="infdetails">
               <div className="name">
-                <h2>{country.name}</h2>
+                <h2>{country.name.common}</h2>
               </div>
               <div className="container-inf">
                 <div className="details1">
                   <p>
-                    <strong>Native Name:</strong> {country.nativeName}
+                    <strong>Native Name:</strong> {Object.values(country.name.nativeName)[0].common}
                   </p>
                   <p>
                     <strong>Population:</strong>{" "}
@@ -74,12 +79,12 @@ const CountryDetail = () => {
 
                 <div className="details2">
                   <p>
-                    <strong>Top Level Domain:</strong>{" "}
-                    {country.topLevelDomain.toString()}
+                    <strong>Top Level Domain: </strong>
+                    {country.tld}
                   </p>
                   <p>
                     <strong>Currencies: </strong>
-                    {country.currencies.map((currency, index, array) =>
+                    {Object.values(country.currencies).map((currency, index, array) =>
                       index === array.length - 1 ? (
                         <span>{currency.name}</span>
                       ) : (
@@ -89,28 +94,31 @@ const CountryDetail = () => {
                   </p>
                   <p>
                     <strong>Languages: </strong>
-                    {country.languages.map((language, index, array) =>
+                    {Object.values(country.languages).map((language, index, array) =>
                       index === array.length - 1 ? (
-                        <span>{language.name}</span>
+                        <span>{language}</span>
                       ) : (
-                        <span>{language.name}, </span>
+                        <span>{language}, </span>
                       )
-                    )}
+                    )
+                    }
                   </p>
                 </div>
               </div>
-              {country.borders.length > 0 && (
+              {country.borders && (
                 <div className="borders">
                   <h3>Border Countries:</h3>
                   <div>
-                    {alphaCodes.map((c) => {
-                      if (country.borders.includes(c.alpha3Code)) {
+                    {country.borders.map((c) => {
+
+                         let arr = namesAndCca3.filter(data => data.cca3 === c)
+                          console.log(arr[0])
                         return (
-                          <Link to={`/countries/${c.name}`}>
-                            <button className="btn border">{c.name}</button>
+                          <Link to={`/countries/${c}`}>
+                            <button className="btn border">{arr[0] && arr[0].name.common}</button>
                           </Link>
                         );
-                      }
+                      
                     })}
                   </div>
                 </div>

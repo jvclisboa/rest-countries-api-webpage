@@ -4,13 +4,15 @@ import "./Countries.scss";
 import Filter from "../Filter/Filter";
 import { Link } from "react-router-dom";
 
-const url = "https://restcountries.eu/rest/v2/all";
+
 
 const Countries = () => {
   const [countries, setCountries] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [isLoading, setIsLoading] = useState(true); 
   const [option, setOption] = useState('')
-
+  const url = "https://restcountries.com/v3.1/all";
+  
   const fetchCountryData = async () => {
     const response = await fetch(url);
     const countriesFetched = await response.json();
@@ -18,9 +20,17 @@ const Countries = () => {
     console.log(countries)
   };
 
+  // // useEffect(() => {
+    
+  // //   fetchCountryData();
+
+  // // }, []);
+
   useEffect(() => {
     fetchCountryData();
-  }, []);
+    setIsLoading(false);
+  
+  }, [])
 
   const handleChange = (newValue) => {
     setSearchTerm(newValue)
@@ -29,6 +39,8 @@ const Countries = () => {
   const handleOptionChange = (newOption) => {
     setOption(newOption)
   }
+
+  if(isLoading){return <div>Loading...</div>}
   return (
     <main className="countries-list">
       <div id="filter">
@@ -39,7 +51,7 @@ const Countries = () => {
         {countries.filter(val => {
           if (searchTerm === "" ) {
             return val
-          } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+          } else if (val.name.common.toLowerCase().includes(searchTerm.toLowerCase())) {
             return val
           }
         }).filter(country => {
@@ -49,30 +61,32 @@ const Countries = () => {
             console.log(option)
             return country
           }
-        }).
-        map((country, _index, _array) => {
+        })
+        .map((country, index, _array) => {
           const {
             name,
             population,
             region,
             capital,
-            flag,
-            alpha3Code,
+            flags,
+            cca3
             
           } = country;
           return (
             <Link
               to={{
-                pathname: `/countries/${name}`,
+                pathname: `/countries/${cca3}`,
               }}
+              key={index}
             >
               <Country
-                name={name}
+                
+                name={name.common}
                 population={population}
                 region={region}
                 capital={capital}
-                flag={flag}
-                alpha3Code={alpha3Code}
+                flag={flags.svg}
+
               />
             </Link>
           );

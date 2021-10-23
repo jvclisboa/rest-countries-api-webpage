@@ -3,7 +3,7 @@ import "./Country.scss";
 
 const Country = (props) => {
   return (
-    <div key={props.alpha3Code}>
+    <div>
       <div className="container">
         <div className="flag-container">
           <img src={props.flag} alt={props.name} />
